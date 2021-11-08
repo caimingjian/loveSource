@@ -59,33 +59,10 @@
     </script>
 
     <script>
+        $('html').on('touchstart',function(){
+            this.audio.play();
 
-        $(function() {
-            audioAutoPlay('CW');
         });
-
-        function audioAutoPlay(id){
-
-            var audio = document.getElementById(id),
-                play = function(){
-                    audio.play();
-                    document.removeEventListener("touchstart",play, false);
-                };
-
-            audio.play();
-
-            //兼容微信
-            document.addEventListener("WeixinJSBridgeReady", function () {
-                play();
-            }, false);
-
-            //兼容易信
-            document.addEventListener('YixinJSBridgeReady', function() {
-                play();
-            }, false);
-
-            document.addEventListener("touchstart",play, false);
-        }
     (function(){
         var canvas = $('#canvas');
 		
